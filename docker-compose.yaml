@@ -1,0 +1,52 @@
+version: '3'
+services:
+  redis:
+    image: redis
+    env_file:
+      - .env.example
+
+  notification_api:
+#    restart: always
+    build:
+      context: .
+      dockerfile: src/Dockerfile
+    env_file:
+      - .env.example
+    depends_on:
+      - redis
+      - rabbit
+      - mongo
+
+  nginx:
+    image: nginx:latest
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./nginx/conf.d:/etc/nginx/conf.d/:ro
+    depends_on:
+      - notification_api
+    ports:
+      - "80:80"
+
+
+  rabbit:
+    image: rabbitmq:3-management
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    volumes:
+      - rabbitmq-data:/var/lib/rabbitmq
+    env_file:
+      - .env.example
+
+  mongo:
+    image: mongo:latest
+    command: mongod --dbpath /data/db --port 27017
+#    ports:
+#      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+
+volumes:
+  rabbitmq-data:
+  mongo-data:
+

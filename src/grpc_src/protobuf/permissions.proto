@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package permissions;
+
+message PermissionRequest {
+    string token = 1;
+    string url = 2;
+}
+
+message PermissionResponse {
+    int64 status = 1;
+    string user_id = 2;
+}
+
+service Permission {
+    rpc CheckPermission(PermissionRequest) returns (PermissionResponse) {} ;
+}

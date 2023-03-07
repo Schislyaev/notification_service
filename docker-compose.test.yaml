@@ -1,0 +1,28 @@
+version: '3'
+services:
+  redis:
+    image: redis
+    env_file:
+      - .env.example
+
+  rabbit:
+    image: rabbitmq:3-management
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    volumes:
+      - rabbitmq-data:/var/lib/rabbitmq
+    env_file:
+      - .env.example
+
+  mongo:
+    image: mongo:latest
+    command: mongod --dbpath /data/db --port 27017
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+
+volumes:
+  rabbitmq-data:
+  mongo_data:

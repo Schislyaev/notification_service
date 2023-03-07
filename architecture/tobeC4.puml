@@ -1,0 +1,121 @@
+@startuml asisC4
+
+!define DEVICONS https://raw.githubusercontent.com/tupadr3/plantuml-icon-font-sprites/master/devicons
+!define FONTAWESOME https://raw.githubusercontent.com/tupadr3/plantuml-icon-font-sprites/master/font-awesome-5
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+!include <office/Concepts/service_application>
+!include FONTAWESOME/users.puml
+!include FONTAWESOME/server.puml
+
+
+skinparam wrapWidth 200
+skinparam Linetype polyline
+LAYOUT_WITH_LEGEND()
+' LAYOUT_LANDSCAPE()
+' LAYOUT_TOP_DOWN()
+'LAYOUT_AS_SKETCH()
+
+AddElementTag("backendContainer", $fontColor=$ELEMENT_FONT_COLOR, $bgColor="#335DA5", $shape=EightSidedShape(), $legendText="backend container\neight sided")
+AddRelTag("dotted", $textColor=$ARROW_COLOR, $lineColor=$ARROW_COLOR, $lineStyle=DottedLine())
+AddBoundaryTag("green_back", $bgColor="GreenYellow")
+AddContainerTag("green_back_ct", $bgColor="GreenYellow", $fontColor="Black")
+
+title
+    <b>Yandex Practicum sprint 10 group #1</b>
+end title
+
+Person(admin, "Administrator")
+Person(ds, "Data Scientist")
+Person_Ext(user, "User", $sprite="users")
+
+Boundary(admin_panel, "Admin Panel") {
+    System(jango, "Django service", $tags="backendContainer")
+    ContainerDb(postgres_admin, "Postgres", "Admin purposes", $sprite="database")
+    Container(movies, "Редакция фильмов", $sprite="service_application")
+}
+
+Rel(jango, movies, )
+
+ContainerDb(elastic, "Elastic", "Полнотекстовый поиск", $sprite="postgresql")
+ContainerDb(redis, "Redis", "Кэширование, хранение токенов", $sprite="redis")
+Container(etl, "ETL", $sprite="service_application")
+
+Rel(admin, jango, "Наполняет данными")
+Rel(jango, postgres_admin, "Изменения")
+Rel_R(postgres_admin, etl, "Extract", $tags="dotted")
+Rel_L(etl, elastic, "Load", $tags="dotted")
+
+Boundary(search_service, "Async API поиска") {
+    System(fast_api, "FastAPI", $tags="backendContainer")
+}
+
+Rel(user, fast_api, "Поиск")
+Rel(fast_api, elastic, "Запрос на поиск", $tags="dotted")
+Rel(elastic, fast_api, "Результат запроса")
+Rel(elastic, redis, "Кэшированный запрос")
+Rel(redis, fast_api, "Результат запроса")
+Rel(fast_api, user, "Результат поиска", $tags="dotted")
+
+Boundary(auth_service, "Сервис авторизации") {
+    System(flask_api, "Flask", $tags="backendContainer")
+    System_Ext(oauth2, "OAuth2")
+    ContainerDb(postgres_auth, "Postgres", "Auth purposes")
+}
+
+Rel(user, flask_api, "Регистрация, логин, рефреш", $tags="dotted")
+Rel(flask_api, oauth2, "Запрос на авторизацию")
+Rel(oauth2, flask_api, "Token", $tags="dotted")
+Rel(flask_api, user, "Tokens")
+Rel(flask_api, postgres_auth, "Refresh token")
+Rel(flask_api, postgres_auth, "User")
+Rel(flask_api, redis, "Revoked tokens")
+
+System(grpc, "gRPC")
+
+Rel(flask_api, grpc, "Роли, права")
+Rel(grpc, fast_api, "Доступ")
+Rel(grpc, admin_panel, "Доступ")
+
+Boundary(big_data, "Сервис  UGC") {
+    System(fast_api_data, "FastAPI", $tags="backendContainer")
+    ContainerDb(kafka, "Kafka", "Накопление данных о событиях", $sprite="database")
+    ContainerDb(ch, "Click House", "Агрегация данных", $sprite="database")
+    Container(etl_2, "ETL", $sprite="service_application")
+}
+
+Rel(user, fast_api_data, "Генерация событий о просмотрах")
+Rel_(user, fast_api_data, "Bookmarks, likes, reviews",, "<->")
+Rel(fast_api_data, kafka, "Передача данных о событиях")
+Rel(kafka, etl_2, "Extract") 
+Rel(etl_2, ch, "Load")
+Rel(ch, ds, "Передача агрегированных данных")
+Rel(grpc, fast_api_data, "Доступ")
+
+Boundary(logs, "Сервис логирования") {
+    Container(elk, "ELK", $sprite="service_application")
+}
+
+Rel_R(All_services, logs, "Логи")
+
+Boundary(notification_service, "Notification service", $tags="green_back") {
+'    Container(notification_admin, "Admin Panel", $sprite="service_application")
+    Container(notification_api, "FastAPI", $sprite="service_application")
+    Container(rabbit, "RabbitMQ", $sprite="service_application")
+    Container(notification_workers, "Workers", $sprite="service_application")
+    ContainerDb(notification_redis, "Redis", "Хеширование сообщения для идемпотентности")
+    ContainerDb(notification_mongo, "MongoDB", "Хранение событий нотификации")
+}
+
+'Rel(notification_admin, notification_api, "Нотификации", $tags="dotted")
+Rel_U(notification_api, rabbit, "Постановка в очередь", $tags="dotted")
+Rel(rabbit, notification_workers, "Потребление элемента очереди", $tags="dotted")
+Rel(notification_workers, user, "Нотификации", "emails,\n websocket pushes,\n sms,\n more...", $tags="dotted")
+Rel(any_service, notification_workers, "Обогащение данными")
+Rel_(notification_workers, notification_redis, "Хэш",, "<->")
+Rel_(notification_api, notification_redis, "Проверки",, "<->")
+Rel(notification_workers, notification_mongo, "Сохранение событий")
+Rel(notification_mongo, notification_api, "Получение событий")
+Rel(big_data, notification_api, "Нотификации")
+Rel(Cron, notification_api, "Нотификации")
+
+@enduml
