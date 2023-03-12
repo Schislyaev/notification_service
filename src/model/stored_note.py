@@ -14,13 +14,11 @@ from model.notifications import BaseNote
 
 class StoredNote(BaseNote):
     """ Response model """
-    user_id: UUID
     email: EmailStr
 
 
 class Note(Document, BaseNote):
     """ Beanie модель - для взаимодействия с круд. Ее не отдать через resp model"""
-    user_id: UUID
     email: EmailStr
 
     class Settings:

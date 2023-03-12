@@ -1,0 +1,45 @@
+2023-03-11 19:35:38,925 - service.notification - INFO - Notification sent for event: ugc
+2023-03-11 20:58:23,729 - service.notification - INFO - Notification sent for event: ugc
+2023-03-11 20:59:24,781 - service.template_service - ERROR - expected token 'end of print statement', got '{'
+Traceback (most recent call last):
+  File "/home/petr/projects/yandex/notifications_sprint_1/src/service/template_service.py", line 15, in validate_template
+    parsed_content = env.parse(template)
+  File "/home/petr/projects/yandex/notifications_sprint_1/.venv/lib/python3.10/site-packages/jinja2/environment.py", line 611, in parse
+    self.handle_exception(source=source)
+  File "/home/petr/projects/yandex/notifications_sprint_1/.venv/lib/python3.10/site-packages/jinja2/environment.py", line 936, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "<unknown>", line 1, in template
+jinja2.exceptions.TemplateSyntaxError: expected token 'end of print statement', got '{'
+2023-03-11 21:06:44,425 - service.template_service - ERROR - expected token 'end of print statement', got '{'
+Traceback (most recent call last):
+  File "/home/petr/projects/yandex/notifications_sprint_1/src/service/template_service.py", line 16, in validate_template
+    parsed_content = env.parse(template)
+  File "/home/petr/projects/yandex/notifications_sprint_1/.venv/lib/python3.10/site-packages/jinja2/environment.py", line 611, in parse
+    self.handle_exception(source=source)
+  File "/home/petr/projects/yandex/notifications_sprint_1/.venv/lib/python3.10/site-packages/jinja2/environment.py", line 936, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "<unknown>", line 1, in template
+jinja2.exceptions.TemplateSyntaxError: expected token 'end of print statement', got '{'
+2023-03-11 21:08:28,983 - service.template_service - ERROR - expected token 'end of print statement', got '{'
+Traceback (most recent call last):
+  File "/home/petr/projects/yandex/notifications_sprint_1/src/service/template_service.py", line 17, in validate_template
+    parsed_content = env.parse(template)
+  File "/home/petr/projects/yandex/notifications_sprint_1/.venv/lib/python3.10/site-packages/jinja2/environment.py", line 611, in parse
+    self.handle_exception(source=source)
+  File "/home/petr/projects/yandex/notifications_sprint_1/.venv/lib/python3.10/site-packages/jinja2/environment.py", line 936, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "<unknown>", line 1, in template
+jinja2.exceptions.TemplateSyntaxError: expected token 'end of print statement', got '{'
+2023-03-11 21:10:47,152 - service.template_service - ERROR - expected token 'end of print statement', got '{'
+Traceback (most recent call last):
+  File "/home/petr/projects/yandex/notifications_sprint_1/src/service/template_service.py", line 17, in validate_template
+    parsed_content = env.parse(template)
+  File "/home/petr/projects/yandex/notifications_sprint_1/.venv/lib/python3.10/site-packages/jinja2/environment.py", line 611, in parse
+    self.handle_exception(source=source)
+  File "/home/petr/projects/yandex/notifications_sprint_1/.venv/lib/python3.10/site-packages/jinja2/environment.py", line 936, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "<unknown>", line 1, in template
+jinja2.exceptions.TemplateSyntaxError: expected token 'end of print statement', got '{'
+2023-03-11 21:12:30,101 - service.template_service - ERROR - Отсутствуют обязательные поля в шаблоне
+NoneType: None
+2023-03-11 21:14:50,212 - service.notification - INFO - Notification sent for event: ugc

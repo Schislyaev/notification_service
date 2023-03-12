@@ -1,4 +1,4 @@
-from datetime import datetime, timedelta
+from datetime import datetime
 from typing import Literal
 from uuid import UUID, uuid4
 
@@ -15,9 +15,10 @@ class Event(BaseModel):
     Общая модель события, которое подлежит отправке в очередь.
     """
 
-    event_type: Literal['ugc', 'periodic']  # Пока ограничился двумя видами сценария
+    event_type: Literal['ugc', 'periodic', 'custom']  # Пока ограничился двумя видами сценария
+    broadcast_type: list[Literal['sms', 'email', 'ws']]
     event_tz: str   # Таймзона
-    data: str   # Тело сообщения. Возможно будет переработана в словарь для темплейтов
+    data: str   # !!Done -  Переработана в модель для темплейтов
 
     class Config:
         arbitrary_types_allowed = True
@@ -32,7 +33,8 @@ class BaseNote(BaseModel):
     Нотификация - сущность обладающая атрибутами для отправки
     """
     id: UUID = Field(default_factory=uuid4, alias="_id")
-    request_id: str = Field(...)    # Поле прилетающее из nginx
+    user_id: UUID
+    request_id: str = Field(default=None)    # Поле прилетающее из nginx (default=None пока дебаг)
     time_created: datetime = Field(default_factory=datetime.utcnow)
     time_posted: datetime = Field(default=None)
     event: Event
@@ -41,32 +43,18 @@ class BaseNote(BaseModel):
         arbitrary_types_allowed = True
         json_loads = orjson.loads
         json_dumps = orjson_dumps
+        orm_mode = True
 
 
-#############################################################
-# Ниже заготовки для ручек посылающих в RabbitMQ
-#############################################################
-
-
-class PeriodicNote(BaseNote):
-    start: datetime = datetime.now()
-    stop: datetime | None = None
-    period: timedelta
+class BaseNoteIn(BaseModel):
+    """
+    Модель на вход в ручку.
+    """
+    user_id: UUID
+    event: Event
 
     class Config:
         arbitrary_types_allowed = True
-
-    class Settings:
-        name = 'events'
-        use_revision = False
-
-
-class UGCNote(BaseNote):
-    pass
-
-    class Config:
-        arbitrary_types_allowed = True
-
-    class Settings:
-        name = 'events'
-        use_revision = False
+        json_loads = orjson.loads
+        json_dumps = orjson_dumps
+        orm_mode = True

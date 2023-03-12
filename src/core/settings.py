@@ -6,6 +6,7 @@ from pydantic import BaseSettings, SecretStr
 class Settings(BaseSettings):
     log_level: str = 'DEBUG'
     project_name: str = 'Notification service'
+
     grpc_host: str = 'localhost'
     grpc_port: int = 5051
 
@@ -13,15 +14,15 @@ class Settings(BaseSettings):
     redis_port: int = 6379
 
     rabbit_url: str = 'amqp://127.0.0.1/'
-    channel_ugc: str = 'notification.send_like'
-    channel_periodic: str = 'notification.send_weekend_news'
-    channel_handmade: str = 'notification.send_personal_note'
+    queue: str = 'notification.send_'
 
     mongo_host: str = 'localhost'
     mongo_port: int = 27017
 
     jwt_secret: SecretStr = ''
     jwt_algorithm: SecretStr = ''
+
+    schedule_collection: str = ''   # для APScheduler
 
     project_root_path = str(pathlib.Path(__file__).parent.parent.parent)
 

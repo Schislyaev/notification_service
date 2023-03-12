@@ -1,0 +1,47 @@
+2023-03-07 22:56:25,524 - service.notification - ERROR - Error sending notification: Server connection unexpectedly closed. Read 0 bytes but 1 bytes expected
+Traceback (most recent call last):
+  File "/home/petr/projects/yandex/notifications_sprint_1/.venv/lib/python3.10/site-packages/aiormq/connection.py", line 158, in get_frame
+    fp.write(await self.reader.readexactly(1))
+  File "/usr/lib/python3.10/asyncio/streams.py", line 705, in readexactly
+    raise exceptions.IncompleteReadError(incomplete, n)
+asyncio.exceptions.IncompleteReadError: 0 bytes read on a total of 1 expected bytes
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/petr/projects/yandex/notifications_sprint_1/src/service/notification.py", line 37, in send_notification
+    await self.channel.default_exchange.publish(
+  File "/home/petr/projects/yandex/notifications_sprint_1/.venv/lib/python3.10/site-packages/aio_pika/exchange.py", line 190, in publish
+    return await self.channel.basic_publish(
+  File "/home/petr/projects/yandex/notifications_sprint_1/.venv/lib/python3.10/site-packages/aiormq/channel.py", line 699, in basic_publish
+    return await countdown(confirmation)
+  File "/home/petr/projects/yandex/notifications_sprint_1/.venv/lib/python3.10/site-packages/aiormq/tools.py", line 95, in __call__
+    return await coro
+  File "/usr/lib/python3.10/asyncio/tasks.py", line 650, in _wrap_awaitable
+    return (yield from awaitable.__await__())
+  File "/home/petr/projects/yandex/notifications_sprint_1/.venv/lib/python3.10/site-packages/aiormq/abc.py", line 44, in __inner
+    return await self.task
+  File "/home/petr/projects/yandex/notifications_sprint_1/.venv/lib/python3.10/site-packages/aiormq/connection.py", line 609, in __reader
+    async for weight, channel, frame in frame_receiver:
+  File "/home/petr/projects/yandex/notifications_sprint_1/.venv/lib/python3.10/site-packages/aiormq/connection.py", line 207, in __anext__
+    return await self.get_frame()
+  File "/home/petr/projects/yandex/notifications_sprint_1/.venv/lib/python3.10/site-packages/aiormq/connection.py", line 182, in get_frame
+    raise AMQPConnectionError(
+aiormq.exceptions.AMQPConnectionError: Server connection unexpectedly closed. Read 0 bytes but 1 bytes expected
+2023-03-07 23:09:04,043 - service.notification - ERROR - Error sending notification: 'event_type'
+Traceback (most recent call last):
+  File "/home/petr/projects/yandex/notifications_sprint_1/src/service/notification.py", line 42, in send_notification
+    self.logger.info(f"Notification sent for event: {event_data['event_type']}")
+KeyError: 'event_type'
+2023-03-07 23:12:03,525 - service.notification - ERROR - Error sending notification: 'event_type'
+Traceback (most recent call last):
+  File "/home/petr/projects/yandex/notifications_sprint_1/src/service/notification.py", line 42, in send_notification
+    self.logger.info(f"Notification sent for event: {event_data['event_type']}")
+KeyError: 'event_type'
+2023-03-07 23:13:50,395 - service.notification - ERROR - Error sending notification: 'event_type'
+Traceback (most recent call last):
+  File "/home/petr/projects/yandex/notifications_sprint_1/src/service/notification.py", line 42, in send_notification
+    self.logger.info(f"Notification sent for event: {event_data['event_type']['event_type']}")
+KeyError: 'event_type'
+2023-03-07 23:14:18,586 - service.notification - INFO - Notification sent for event: ugc
+2023-03-07 23:27:28,491 - service.notification - INFO - Notification sent for event: ugc

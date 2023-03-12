@@ -2,17 +2,19 @@ import aioredis
 # import sentry_sdk
 import uvicorn as uvicorn
 from aio_pika import connect_robust
+from apscheduler.schedulers.asyncio import AsyncIOScheduler
 from beanie import init_beanie
 from fastapi import FastAPI
 from fastapi.responses import ORJSONResponse
 from motor.motor_asyncio import AsyncIOMotorClient
 
 from api.v1 import events, notification
-from core.logger import LOGGING, Logger
+from core.logger import Logger
 from core.settings import settings
 from db import mongo, rabbit, redis
 # from model.notifications import Event
 from model.stored_note import Note
+from scheduler import scheduler
 
 logger = Logger(__name__)
 
@@ -49,21 +51,16 @@ async def startup():
         ),
         uuidRepresentation='standard',
     )
+
+    scheduler.scheduler = AsyncIOScheduler(
+
+    )
+    scheduler.scheduler.start()
+
     await init_beanie(
         database=mongo.client['notifications'],     # Имя коллекции
         document_models=[Note]
     )
-
-    # Тут пример поста в БД с методом beanie - для теста
-    #
-    # await Note(
-    #     request_id='qwwwwwwwwwwwwWWWWWWWWWWWWWWWwwwwwwwwwwwww',
-    #     event=Event(event_type="ugc", event_tz="string", data="string"),
-    #     user_id='5421770f-dd22-467c-8a01-861237fdd159',
-    #     email="user@example.com"
-    # ).insert()
-
-    print('ok')
 
 
 @app.on_event('shutdown')
@@ -78,11 +75,13 @@ async def shutdown():
     if mongo.client:
         mongo.client.close()
 
+    if scheduler.scheduler:
+        scheduler.scheduler.shutdown()
+
 
 if __name__ == '__main__':
     uvicorn.run(
         'main:app',
         host='0.0.0.0',
         port=8000,
-        log_config=LOGGING
     )

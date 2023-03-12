@@ -46,6 +46,19 @@ services:
     volumes:
       - mongo-data:/data/db
 
+  websocket_app:
+    build:
+      context: .
+      dockerfile: websosket_notification_app/Dockerfile
+
+  websocket_nginx:
+    image: nginx:latest
+    volumes:
+      - ./websosket_notification_app/nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./websosket_notification_app/nginx/conf.d:/etc/nginx/conf.d/:ro
+    ports:
+      - "9000:80"
+
 volumes:
   rabbitmq-data:
   mongo-data:

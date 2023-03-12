@@ -1,0 +1,192 @@
+2023-03-12 10:45:38,721 - service.template_service - ERROR - Сообщение заполнено не верно
+NoneType: None
+2023-03-12 10:48:20,249 - service.template_service - ERROR - Сообщение заполнено не верно
+NoneType: None
+2023-03-12 10:49:11,060 - service.template_service - ERROR - Сообщение заполнено не верно
+NoneType: None
+2023-03-12 10:55:17,227 - service.template_service - ERROR - Сообщение заполнено не верно
+NoneType: None
+2023-03-12 11:34:06,298 - service.notification - INFO - Notification sent for event: custom
+2023-03-12 11:35:02,963 - service.notification - INFO - Notification sent for event: custom
+2023-03-12 11:35:43,470 - service.template_service - ERROR - Сообщение заполнено не верно
+NoneType: None
+2023-03-12 11:41:01,879 - service.template_service - ERROR - Сообщение заполнено не верно
+NoneType: None
+2023-03-12 11:41:42,269 - service.template_service - ERROR - unexpected end of template, expected 'end of print statement'.
+Traceback (most recent call last):
+  File "/home/petr/projects/yandex/notifications_sprint_1/src/service/template_service.py", line 15, in validate_template
+    parsed_content = env.parse(template)
+  File "/home/petr/projects/yandex/notifications_sprint_1/.venv/lib/python3.10/site-packages/jinja2/environment.py", line 611, in parse
+    self.handle_exception(source=source)
+  File "/home/petr/projects/yandex/notifications_sprint_1/.venv/lib/python3.10/site-packages/jinja2/environment.py", line 936, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "<unknown>", line 1, in template
+jinja2.exceptions.TemplateSyntaxError: unexpected end of template, expected 'end of print statement'.
+2023-03-12 11:42:53,472 - service.template_service - ERROR - Сообщение заполнено не верно
+NoneType: None
+2023-03-12 12:05:36,276 - service.notification - INFO - Notification sent for event: custom
+2023-03-12 12:08:29,034 - service.notification - INFO - Notification sent for event: custom
+2023-03-12 12:59:26,048 - service.notification - INFO - Notification sent for event: custom
+2023-03-12 13:01:01,505 - service.notification - INFO - Notification sent for event: custom
+2023-03-12 13:01:06,895 - service.notification - INFO - Notification sent for event: custom
+2023-03-12 13:01:21,417 - service.notification - INFO - Notification sent for event: custom
+2023-03-12 13:01:40,022 - service.notification - INFO - Notification sent for event: custom
+2023-03-12 13:11:06,731 - service.notification - INFO - Notification sent for event: custom
+2023-03-12 13:11:34,749 - service.notification - INFO - Notification sent for event: custom
+2023-03-12 13:11:48,924 - service.notification - INFO - Notification sent for event: custom
+2023-03-12 13:12:10,458 - service.notification - INFO - Notification sent for event: custom
+2023-03-12 13:12:21,281 - service.notification - INFO - Notification sent for event: custom
+2023-03-12 13:12:43,423 - service.notification - INFO - Notification sent for event: custom
+2023-03-12 13:12:59,757 - service.notification - INFO - Notification sent for event: custom
+2023-03-12 13:29:07,168 - service.notification - INFO - Notification sent for event: ugc
+2023-03-12 13:39:39,523 - api.v1.notification - ERROR - 'Settings' object has no attribute 'channel_periodic'
+Traceback (most recent call last):
+  File "/home/petr/projects/yandex/notifications_sprint_1/src/api/v1/notification.py", line 53, in post_periodic_note
+    args=[event, settings.channel_periodic],
+AttributeError: 'Settings' object has no attribute 'channel_periodic'
+2023-03-12 13:41:00,022 - service.notification - INFO - Notification sent for event: ugc
+2023-03-12 13:42:45,020 - service.notification - INFO - Notification sent for event: ugc
+2023-03-12 13:45:45,068 - service.notification - INFO - Notification sent for event: periodic
+2023-03-12 13:45:48,028 - service.notification - INFO - Notification sent for event: periodic
+2023-03-12 13:45:51,020 - service.notification - INFO - Notification sent for event: periodic
+2023-03-12 13:45:54,034 - service.notification - INFO - Notification sent for event: periodic
+2023-03-12 13:45:57,031 - service.notification - INFO - Notification sent for event: periodic
+2023-03-12 13:46:00,032 - service.notification - INFO - Notification sent for event: periodic
+2023-03-12 13:46:03,029 - service.notification - INFO - Notification sent for event: periodic
+2023-03-12 13:46:06,032 - service.notification - INFO - Notification sent for event: periodic
+2023-03-12 13:46:09,027 - service.notification - INFO - Notification sent for event: periodic
+2023-03-12 13:46:12,021 - service.notification - INFO - Notification sent for event: periodic
+2023-03-12 13:46:15,034 - service.notification - INFO - Notification sent for event: periodic
+2023-03-12 13:46:18,033 - service.notification - INFO - Notification sent for event: periodic
+2023-03-12 13:46:21,022 - service.notification - INFO - Notification sent for event: periodic
+2023-03-12 13:46:24,022 - service.notification - INFO - Notification sent for event: periodic
+2023-03-12 13:46:27,022 - service.notification - INFO - Notification sent for event: periodic
+2023-03-12 13:46:27,023 - service.notification - INFO - Notification sent for event: periodic
+2023-03-12 13:46:28,029 - service.notification - INFO - Notification sent for event: periodic
+2023-03-12 13:46:29,014 - service.notification - INFO - Notification sent for event: periodic
+2023-03-12 13:46:30,019 - service.notification - INFO - Notification sent for event: periodic
+2023-03-12 13:46:30,020 - service.notification - INFO - Notification sent for event: periodic
+2023-03-12 13:46:31,013 - service.notification - INFO - Notification sent for event: periodic
+2023-03-12 13:46:32,028 - service.notification - INFO - Notification sent for event: periodic
+2023-03-12 13:46:33,029 - service.notification - INFO - Notification sent for event: periodic
+2023-03-12 13:46:33,031 - service.notification - INFO - Notification sent for event: periodic
+2023-03-12 13:46:34,013 - service.notification - INFO - Notification sent for event: periodic
+2023-03-12 13:46:35,015 - service.notification - INFO - Notification sent for event: periodic
+2023-03-12 13:46:36,031 - service.notification - INFO - Notification sent for event: periodic
+2023-03-12 13:46:36,031 - service.notification - INFO - Notification sent for event: periodic
+2023-03-12 13:46:37,024 - service.notification - INFO - Notification sent for event: periodic
+2023-03-12 13:46:38,033 - service.notification - INFO - Notification sent for event: periodic
+2023-03-12 13:46:39,031 - service.notification - INFO - Notification sent for event: periodic
+2023-03-12 13:46:39,031 - service.notification - INFO - Notification sent for event: periodic
+2023-03-12 13:46:40,016 - service.notification - INFO - Notification sent for event: periodic
+2023-03-12 13:46:41,029 - service.notification - INFO - Notification sent for event: periodic
+2023-03-12 13:46:42,020 - service.notification - INFO - Notification sent for event: periodic
+2023-03-12 13:46:42,021 - service.notification - INFO - Notification sent for event: periodic
+2023-03-12 13:46:43,020 - service.notification - INFO - Notification sent for event: periodic
+2023-03-12 13:46:44,021 - service.notification - INFO - Notification sent for event: periodic
+2023-03-12 13:46:45,022 - service.notification - INFO - Notification sent for event: periodic
+2023-03-12 13:46:45,022 - service.notification - INFO - Notification sent for event: periodic
+2023-03-12 13:46:46,031 - service.notification - INFO - Notification sent for event: periodic
+2023-03-12 13:46:47,032 - service.notification - INFO - Notification sent for event: periodic
+2023-03-12 13:46:48,032 - service.notification - INFO - Notification sent for event: periodic
+2023-03-12 13:46:48,032 - service.notification - INFO - Notification sent for event: periodic
+2023-03-12 13:46:49,034 - service.notification - INFO - Notification sent for event: periodic
+2023-03-12 13:46:50,034 - service.notification - INFO - Notification sent for event: periodic
+2023-03-12 13:46:51,028 - service.notification - INFO - Notification sent for event: periodic
+2023-03-12 13:46:51,028 - service.notification - INFO - Notification sent for event: periodic
+2023-03-12 13:46:52,065 - service.notification - INFO - Notification sent for event: periodic
+2023-03-12 13:46:53,023 - service.notification - INFO - Notification sent for event: periodic
+2023-03-12 13:46:54,039 - service.notification - INFO - Notification sent for event: periodic
+2023-03-12 13:46:54,039 - service.notification - INFO - Notification sent for event: periodic
+2023-03-12 13:46:55,016 - service.notification - INFO - Notification sent for event: periodic
+2023-03-12 13:46:56,019 - service.notification - INFO - Notification sent for event: periodic
+2023-03-12 13:46:57,043 - service.notification - INFO - Notification sent for event: periodic
+2023-03-12 13:46:57,044 - service.notification - INFO - Notification sent for event: periodic
+2023-03-12 13:46:58,033 - service.notification - INFO - Notification sent for event: periodic
+2023-03-12 13:46:59,014 - service.notification - INFO - Notification sent for event: periodic
+2023-03-12 13:47:00,025 - service.notification - INFO - Notification sent for event: periodic
+2023-03-12 13:47:00,025 - service.notification - INFO - Notification sent for event: periodic
+2023-03-12 13:47:01,022 - service.notification - INFO - Notification sent for event: periodic
+2023-03-12 13:47:02,014 - service.notification - INFO - Notification sent for event: periodic
+2023-03-12 13:47:03,017 - service.notification - INFO - Notification sent for event: periodic
+2023-03-12 13:47:03,017 - service.notification - INFO - Notification sent for event: periodic
+2023-03-12 13:47:04,027 - service.notification - INFO - Notification sent for event: periodic
+2023-03-12 13:47:04,027 - service.notification - INFO - Notification sent for event: periodic
+2023-03-12 13:47:05,017 - service.notification - INFO - Notification sent for event: periodic
+2023-03-12 13:47:05,018 - service.notification - INFO - Notification sent for event: periodic
+2023-03-12 13:47:06,019 - service.notification - INFO - Notification sent for event: periodic
+2023-03-12 13:47:06,019 - service.notification - INFO - Notification sent for event: periodic
+2023-03-12 13:47:06,019 - service.notification - INFO - Notification sent for event: periodic
+2023-03-12 13:47:07,017 - service.notification - INFO - Notification sent for event: periodic
+2023-03-12 13:47:07,017 - service.notification - INFO - Notification sent for event: periodic
+2023-03-12 13:47:08,022 - service.notification - INFO - Notification sent for event: periodic
+2023-03-12 13:47:08,023 - service.notification - INFO - Notification sent for event: periodic
+2023-03-12 13:47:09,018 - service.notification - INFO - Notification sent for event: periodic
+2023-03-12 13:47:09,019 - service.notification - INFO - Notification sent for event: periodic
+2023-03-12 13:47:09,019 - service.notification - INFO - Notification sent for event: periodic
+2023-03-12 13:47:10,015 - service.notification - INFO - Notification sent for event: periodic
+2023-03-12 13:47:10,015 - service.notification - INFO - Notification sent for event: periodic
+2023-03-12 13:47:11,031 - service.notification - INFO - Notification sent for event: periodic
+2023-03-12 13:47:11,031 - service.notification - INFO - Notification sent for event: periodic
+2023-03-12 13:47:12,028 - service.notification - INFO - Notification sent for event: periodic
+2023-03-12 13:47:12,029 - service.notification - INFO - Notification sent for event: periodic
+2023-03-12 13:47:12,029 - service.notification - INFO - Notification sent for event: periodic
+2023-03-12 13:47:13,028 - service.notification - INFO - Notification sent for event: periodic
+2023-03-12 13:47:13,028 - service.notification - INFO - Notification sent for event: periodic
+2023-03-12 13:47:14,016 - service.notification - INFO - Notification sent for event: periodic
+2023-03-12 13:47:14,017 - service.notification - INFO - Notification sent for event: periodic
+2023-03-12 13:47:15,018 - service.notification - INFO - Notification sent for event: periodic
+2023-03-12 13:47:15,018 - service.notification - INFO - Notification sent for event: periodic
+2023-03-12 13:47:15,018 - service.notification - INFO - Notification sent for event: periodic
+2023-03-12 13:47:16,026 - service.notification - INFO - Notification sent for event: periodic
+2023-03-12 13:47:16,026 - service.notification - INFO - Notification sent for event: periodic
+2023-03-12 13:47:17,031 - service.notification - INFO - Notification sent for event: periodic
+2023-03-12 13:47:17,031 - service.notification - INFO - Notification sent for event: periodic
+2023-03-12 13:47:18,073 - service.notification - INFO - Notification sent for event: periodic
+2023-03-12 13:47:18,073 - service.notification - INFO - Notification sent for event: periodic
+2023-03-12 13:47:18,073 - service.notification - INFO - Notification sent for event: periodic
+2023-03-12 13:47:19,026 - service.notification - INFO - Notification sent for event: periodic
+2023-03-12 13:47:19,026 - service.notification - INFO - Notification sent for event: periodic
+2023-03-12 13:47:20,027 - service.notification - INFO - Notification sent for event: periodic
+2023-03-12 13:47:20,027 - service.notification - INFO - Notification sent for event: periodic
+2023-03-12 13:47:21,020 - service.notification - INFO - Notification sent for event: periodic
+2023-03-12 13:47:21,020 - service.notification - INFO - Notification sent for event: periodic
+2023-03-12 13:47:21,020 - service.notification - INFO - Notification sent for event: periodic
+2023-03-12 13:47:22,021 - service.notification - INFO - Notification sent for event: periodic
+2023-03-12 13:47:22,021 - service.notification - INFO - Notification sent for event: periodic
+2023-03-12 13:47:23,029 - service.notification - INFO - Notification sent for event: periodic
+2023-03-12 13:47:23,029 - service.notification - INFO - Notification sent for event: periodic
+2023-03-12 13:47:24,019 - service.notification - INFO - Notification sent for event: periodic
+2023-03-12 13:47:24,019 - service.notification - INFO - Notification sent for event: periodic
+2023-03-12 13:47:24,019 - service.notification - INFO - Notification sent for event: periodic
+2023-03-12 13:47:25,031 - service.notification - INFO - Notification sent for event: periodic
+2023-03-12 13:47:25,031 - service.notification - INFO - Notification sent for event: periodic
+2023-03-12 13:47:26,016 - service.notification - INFO - Notification sent for event: periodic
+2023-03-12 13:47:26,016 - service.notification - INFO - Notification sent for event: periodic
+2023-03-12 13:47:27,033 - service.notification - INFO - Notification sent for event: periodic
+2023-03-12 13:47:27,033 - service.notification - INFO - Notification sent for event: periodic
+2023-03-12 13:47:27,033 - service.notification - INFO - Notification sent for event: periodic
+2023-03-12 13:47:28,029 - service.notification - INFO - Notification sent for event: periodic
+2023-03-12 13:47:28,030 - service.notification - INFO - Notification sent for event: periodic
+2023-03-12 13:47:29,030 - service.notification - INFO - Notification sent for event: periodic
+2023-03-12 13:47:29,031 - service.notification - INFO - Notification sent for event: periodic
+2023-03-12 13:47:30,030 - service.notification - INFO - Notification sent for event: periodic
+2023-03-12 13:47:30,030 - service.notification - INFO - Notification sent for event: periodic
+2023-03-12 13:47:30,030 - service.notification - INFO - Notification sent for event: periodic
+2023-03-12 13:47:31,035 - service.notification - INFO - Notification sent for event: periodic
+2023-03-12 13:47:31,035 - service.notification - INFO - Notification sent for event: periodic
+2023-03-12 13:47:32,016 - service.notification - INFO - Notification sent for event: periodic
+2023-03-12 13:47:32,017 - service.notification - INFO - Notification sent for event: periodic
+2023-03-12 15:45:55,252 - api.v1.notification - ERROR - CronTrigger.__init__() got an unexpected keyword argument 'secon'
+Traceback (most recent call last):
+  File "/home/petr/projects/yandex/notifications_sprint_1/src/api/v1/notification.py", line 51, in post_periodic_note
+    scheduler.add_job(
+  File "/home/petr/projects/yandex/notifications_sprint_1/.venv/lib/python3.10/site-packages/apscheduler/schedulers/base.py", line 424, in add_job
+    'trigger': self._create_trigger(trigger, trigger_args),
+  File "/home/petr/projects/yandex/notifications_sprint_1/.venv/lib/python3.10/site-packages/apscheduler/schedulers/base.py", line 925, in _create_trigger
+    return self._create_plugin_instance('trigger', trigger, trigger_args)
+  File "/home/petr/projects/yandex/notifications_sprint_1/.venv/lib/python3.10/site-packages/apscheduler/schedulers/base.py", line 910, in _create_plugin_instance
+    return plugin_cls(**constructor_kwargs)
+TypeError: CronTrigger.__init__() got an unexpected keyword argument 'secon'
+2023-03-12 18:43:38,241 - service.notification - INFO - Notification sent for event: ugc
+2023-03-12 18:44:26,716 - service.notification - INFO - Notification sent for event: ugc

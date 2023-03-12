@@ -12,7 +12,7 @@ class Logger:
             os.mkdir(f'{settings.project_root_path}/logs')
         self.logger = logging.getLogger(log_file)
         self.logger.setLevel(logging.DEBUG)
-        formatter = logging.Formatter('%(asctime)s - %(log_file)s - %(levelname)s - %(message)s')
+        formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
         file_handler = logging.FileHandler(
             f"{settings.project_root_path}/logs/{self.file_name}.log", mode='a', encoding='utf-8'
         )
